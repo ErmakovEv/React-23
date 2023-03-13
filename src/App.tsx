@@ -3,17 +3,18 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import AboutPage from './pages/AboutPage';
 import ErrorPage from './pages/ErrorPage';
-import Navbar from './components/UI/navbar/Navbar';
+import Layout from './components/layout/Layout';
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/" element={<MainPage />} />
-        <Route path="/error" element={<ErrorPage />} />
-        <Route path="/*" element={<Navigate to="/error" replace />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<MainPage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="error" element={<ErrorPage />} />
+          <Route path="*" element={<Navigate to="/error" replace />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
