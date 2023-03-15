@@ -3,21 +3,48 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import AboutPage from './pages/AboutPage';
 import ErrorPage from './pages/ErrorPage';
-import Layout from './components/layout/Layout';
+import Navbar from './components/UI/navbar/Navbar';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<MainPage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="error" element={<ErrorPage />} />
-          <Route path="*" element={<Navigate to="/error" replace />} />
-        </Route>
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar name="main" /> <MainPage />
+            </>
+          }
+        />
+        <Route
+          path="about"
+          element={
+            <>
+              <Navbar name="about" /> <AboutPage />
+            </>
+          }
+        />
+        <Route
+          path="error"
+          element={
+            <>
+              <Navbar name="404" /> <ErrorPage />
+            </>
+          }
+        />
+        <Route path="*" element={<Navigate to="/error" replace />} />
       </Routes>
+      <footer>2023</footer>
     </BrowserRouter>
   );
 }
 
 export default App;
+
+// constructor(props = {}) {
+//   super(props);
+//   this.state = {
+//     searchValue: localStorageService.get(SearchBar.searchValue) || '',
+//   };
+// }

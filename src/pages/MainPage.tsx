@@ -3,6 +3,7 @@ import { Component } from 'react';
 import PostService from '../components/api/PostService';
 import { IPost } from '../components/post/Post.types';
 import PostList from '../components/postList/PostList';
+import './page.css';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface MainPageProps {}
@@ -18,12 +19,15 @@ class MainPage extends Component<MainPageProps, MainPageState> {
   }
 
   componentDidMount(): void {
-    PostService.getAllHeadlines().then((data) => this.setState({ posts: data }));
+    PostService.getAllHeadlines().then((data) => {
+      console.log(data);
+      this.setState({ posts: data });
+    });
   }
 
   render() {
     return (
-      <div>
+      <div className="container main_page__container">
         <PostList posts={this.state.posts} />
       </div>
     );

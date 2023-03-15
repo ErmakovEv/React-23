@@ -11,8 +11,17 @@ class Post extends Component<PostProps> {
   render() {
     return (
       <div className={classes.post}>
-        <h1>{this.props.post.title}</h1>
-        <p>{this.props.post.description}</p>
+        <img src={this.props.post.urlToImage} alt="post_img" />
+        <h3>{this.props.post.title}</h3>
+        <p className="post_source">
+          By <span>{this.props.post.source?.name}</span>
+        </p>
+        <hr />
+        <div className={classes.post_icons}>
+          <div>👍 - 0</div>
+          <div>👎 - 0</div>
+          <div>👀 - 0</div>
+        </div>
       </div>
     );
   }
