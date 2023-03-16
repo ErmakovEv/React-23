@@ -35,7 +35,6 @@ function App() {
         />
         <Route path="*" element={<Navigate to="/error" replace />} />
       </Routes>
-      <footer>2023</footer>
     </BrowserRouter>
   );
 }

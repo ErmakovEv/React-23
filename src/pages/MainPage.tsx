@@ -3,7 +3,7 @@ import { Component } from 'react';
 import PostService from '../components/api/PostService';
 import { IPost } from '../components/post/Post.types';
 import PostList from '../components/postList/PostList';
-import './page.css';
+import MySearch from '../components/UI/search/MySearch';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface MainPageProps {}
@@ -27,7 +27,8 @@ class MainPage extends Component<MainPageProps, MainPageState> {
 
   render() {
     return (
-      <div className="container main_page__container">
+      <div className="main_page__container">
+        <MySearch />
         <PostList posts={this.state.posts} />
       </div>
     );

@@ -1,5 +1,9 @@
 function ErrorPage() {
-  return <h1>404</h1>;
+  return (
+    <div className="container">
+      <h1>Опаньки...</h1>
+    </div>
+  );
 }
 
 export default ErrorPage;
