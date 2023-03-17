@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
+
 function Navbar(props: { name: string }) {
   console.log('Navbar');
 

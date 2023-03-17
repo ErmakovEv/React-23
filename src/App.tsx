@@ -40,10 +40,3 @@ function App() {
 }
 
 export default App;
-
-// constructor(props = {}) {
-//   super(props);
-//   this.state = {
-//     searchValue: localStorageService.get(SearchBar.searchValue) || '',
-//   };
-// }
