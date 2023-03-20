@@ -2,8 +2,7 @@ import * as React from 'react';
 import { Component, ChangeEvent } from 'react';
 import './MySearch.css';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface MySearchProps {}
+type MySearchProps = Record<string, never>;
 
 interface MySearchState {
   search: string;

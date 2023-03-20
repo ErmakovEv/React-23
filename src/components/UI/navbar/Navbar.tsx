@@ -2,8 +2,6 @@ import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar(props: { name: string }) {
-  console.log('Navbar');
-
   return (
     <div className="navbar">
       <div className="container navbar__container">
