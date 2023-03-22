@@ -3,37 +3,19 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import AboutPage from './pages/AboutPage';
 import ErrorPage from './pages/ErrorPage';
-import Navbar from './components/UI/navbar/Navbar';
+// import Navbar from './components/UI/navbar/Navbar';
+import Layout from './components/layout/Layout';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Navbar name="main" /> <MainPage />
-            </>
-          }
-        />
-        <Route
-          path="about"
-          element={
-            <>
-              <Navbar name="about" /> <AboutPage />
-            </>
-          }
-        />
-        <Route
-          path="error"
-          element={
-            <>
-              <Navbar name="404" /> <ErrorPage />
-            </>
-          }
-        />
-        <Route path="*" element={<Navigate to="/error" replace />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<MainPage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="error" element={<ErrorPage />} />
+          <Route path="*" element={<Navigate to="/error" replace />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

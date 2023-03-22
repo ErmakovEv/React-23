@@ -1,7 +1,27 @@
-import { NavLink } from 'react-router-dom';
+import * as React from 'react';
+import { Component } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
-function Navbar(props: { name: string }) {
+type NavProps = Record<string, never>;
+
+type NavState = Record<string, never>;
+
+const path = {
+  '/': 'Main',
+  '/about': 'About',
+};
+
+export const AppNavbar = () => {
+  const page = useLocation().pathname;
+  return class Nav extends Component<NavProps, NavState> {
+    render() {
+      return <Navbar name={path[page as keyof typeof path] + '!'} />;
+    }
+  };
+};
+
+export function Navbar(props: { name: string }) {
   return (
     <div className="navbar">
       <div className="container navbar__container">
@@ -21,5 +41,3 @@ function Navbar(props: { name: string }) {
     </div>
   );
 }
-
-export default Navbar;

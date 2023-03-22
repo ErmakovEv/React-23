@@ -20,7 +20,6 @@ class MainPage extends Component<MainPageProps, MainPageState> {
 
   componentDidMount(): void {
     PostService.getAllHeadlines().then((data) => {
-      console.log(data);
       this.setState({ posts: data });
     });
   }

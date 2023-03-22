@@ -19,7 +19,6 @@ class MySearch extends Component<MySearchProps, MySearchState> {
   }
 
   searchHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     this.setState({ search: e.target.value });
   };
 
