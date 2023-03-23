@@ -10,6 +10,7 @@ type NavState = Record<string, never>;
 const path = {
   '/': 'Main',
   '/about': 'About',
+  '/form': 'Form',
 };
 
 export const AppNavbar = () => {
@@ -31,6 +32,9 @@ export function Navbar(props: { name: string }) {
           </NavLink>
           <NavLink className="link" to="/about">
             About us
+          </NavLink>
+          <NavLink className="link" to="/form">
+            Form
           </NavLink>
         </div>
         <p className="page_name">{props.name}</p>
