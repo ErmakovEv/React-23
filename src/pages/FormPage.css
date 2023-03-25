@@ -1,3 +1,15 @@
 label {
   display: block;
 }
+
+p {
+  color: red;
+}
+
+.message {
+  display: none;
+}
+
+.message.active {
+  display: block;
+}
