@@ -1,16 +1,8 @@
 import * as React from 'react';
 import './FormPage.css';
 import Form from '../components/form/Form';
-import Card from '../components/card/Card';
-
-interface ICard {
-  name: string;
-  sex: string | null;
-  date: string;
-  speciality: string | null;
-  technology: string[];
-  avaSrc: string | undefined;
-}
+import { ICard } from '../components/card/Card.types';
+import CardList from '../components/cardList/CardList';
 
 type FormPageProps = Record<string, never>;
 
@@ -131,7 +123,7 @@ class FormPage extends React.Component<FormPageProps, FormPageState> {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Form
           handleSubmit={this.handleSubmit}
           nameInput={this.nameInput}
@@ -146,21 +138,8 @@ class FormPage extends React.Component<FormPageProps, FormPageState> {
           errFile={this.errFile}
           classMsg={this.state.classMsg}
         />
-
         <div>
-          {this.state.cards.length
-            ? this.state.cards.map((item, index) => (
-                <Card
-                  key={index}
-                  name={item.name}
-                  sex={item.sex}
-                  date={item.date}
-                  speciality={item.speciality}
-                  technology={item.technology}
-                  avaSrc={item.avaSrc}
-                />
-              ))
-            : ''}
+          <CardList cards={this.state.cards} />
         </div>
       </div>
     );
