@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
+import classes from '../post/Post.module.css';
 
 interface CardProps {
   name: string;
@@ -18,13 +19,14 @@ class Card extends Component<CardProps, CardState> {
   }
   render() {
     return (
-      <div>
-        <h2>{this.props.name}</h2>
-        <h2>{this.props.sex}</h2>
-        <h2>{this.props.date}</h2>
-        <h2>{this.props.speciality}</h2>
-        <h2>{this.props.technology.join(' ')}</h2>
-        <img src={this.props.avaSrc} alt="ava" style={{ width: '100px' }} />
+      <div className={classes.post}>
+        <img src={this.props.avaSrc} alt="ava" />
+        <hr />
+        <h3 className="post_source">{this.props.name}</h3>
+        <p>{this.props.sex}</p>
+        <h4>{this.props.date}</h4>
+        <h4>{this.props.speciality}</h4>
+        <h4>{this.props.technology.join(' ')}</h4>
       </div>
     );
   }

@@ -23,4 +23,19 @@ describe('FormPage', () => {
     const input = getByLabelText('Ваше имя');
     expect(input).toHaveAttribute('type', 'text');
   });
+
+  // it('adds a card when the form is submitted', () => {
+  //   const { getByText } = render(<FormPage />);
+  //   const nameInput = screen.getByLabelText('Ваше имя') as HTMLInputElement;
+
+  //   fireEvent.change(nameInput, { target: { value: 'John Doe' } });
+  //   // const maleInput = screen.getByLabelText('Ваш пол') as HTMLInputElement;
+  //   // fireEvent.click(maleInput);
+  //   // const fileInput = screen.getByLabelText('Avatar') as HTMLInputElement;
+  //   // const file = new File(['test file'], 'test.png', { type: 'image/png' });
+  //   // fireEvent.change(fileInput, { target: { files: [file] } });
+  //   const submitBtn = getByText(/Отправить/i);
+  //   fireEvent.submit(submitBtn);
+  //   expect(screen.findByText('John Doe')).toBeInTheDocument();
+  // });
 });

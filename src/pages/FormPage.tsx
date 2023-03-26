@@ -138,9 +138,7 @@ class FormPage extends React.Component<FormPageProps, FormPageState> {
           errFile={this.errFile}
           classMsg={this.state.classMsg}
         />
-        <div>
-          <CardList cards={this.state.cards} />
-        </div>
+        <CardList cards={this.state.cards} />
       </div>
     );
   }

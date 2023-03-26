@@ -15,20 +15,22 @@ class CardList extends Component<CardListProps, CardListState> {
   }
   render() {
     return (
-      <div>
-        {this.props.cards.length
-          ? this.props.cards.map((item, index) => (
-              <Card
-                key={index}
-                name={item.name}
-                sex={item.sex}
-                date={item.date}
-                speciality={item.speciality}
-                technology={item.technology}
-                avaSrc={item.avaSrc}
-              />
-            ))
-          : 'Карточек нет!'}
+      <div className="card_container">
+        {this.props.cards.length ? (
+          this.props.cards.map((item, index) => (
+            <Card
+              key={index}
+              name={item.name}
+              sex={item.sex}
+              date={item.date}
+              speciality={item.speciality}
+              technology={item.technology}
+              avaSrc={item.avaSrc}
+            />
+          ))
+        ) : (
+          <h1 className="empty">Карточек нет!</h1>
+        )}
       </div>
     );
   }
