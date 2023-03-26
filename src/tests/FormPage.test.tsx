@@ -24,18 +24,52 @@ describe('FormPage', () => {
     expect(input).toHaveAttribute('type', 'text');
   });
 
-  // it('adds a card when the form is submitted', () => {
-  //   const { getByText } = render(<FormPage />);
-  //   const nameInput = screen.getByLabelText('Ваше имя') as HTMLInputElement;
+  it('test unvalid name in nameInput', () => {
+    render(<FormPage />);
+    const nameInput = screen.getByLabelText('Ваше имя') as HTMLInputElement;
+    const form = screen.getByTestId('form') as HTMLFormElement;
+    fireEvent.change(nameInput, { target: { value: 'невалидное имя' } });
+    fireEvent.submit(form);
+    screen.debug();
+    expect(screen.getByText(/неправильное имя/i)).toBeInTheDocument();
+  });
 
-  //   fireEvent.change(nameInput, { target: { value: 'John Doe' } });
-  //   // const maleInput = screen.getByLabelText('Ваш пол') as HTMLInputElement;
-  //   // fireEvent.click(maleInput);
-  //   // const fileInput = screen.getByLabelText('Avatar') as HTMLInputElement;
-  //   // const file = new File(['test file'], 'test.png', { type: 'image/png' });
-  //   // fireEvent.change(fileInput, { target: { files: [file] } });
-  //   const submitBtn = getByText(/Отправить/i);
-  //   fireEvent.submit(submitBtn);
-  //   expect(screen.findByText('John Doe')).toBeInTheDocument();
-  // });
+  it('add file', () => {
+    window.URL.createObjectURL = jest.fn();
+    render(<FormPage />);
+    const fileInput = screen.getByTestId('photo-uploader') as HTMLInputElement;
+    fireEvent.change(fileInput, {
+      target: {
+        files: [new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })],
+      },
+    });
+    if (fileInput.files) {
+      expect(fileInput.files[0].name).toBe('chucknorris.png');
+    }
+  });
+
+  it('radio ', () => {
+    render(<FormPage />);
+    const input = screen.getByTestId('radio') as HTMLInputElement;
+    fireEvent.click(input);
+    expect(input).toBeChecked();
+  });
+
+  it('add card', () => {
+    render(<FormPage />);
+
+    const input = screen.getByTestId('radio') as HTMLInputElement;
+    fireEvent.click(input);
+    const fileInput = screen.getByTestId('photo-uploader') as HTMLInputElement;
+    fireEvent.change(fileInput, {
+      target: {
+        files: [new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })],
+      },
+    });
+    const nameInput = screen.getByLabelText('Ваше имя') as HTMLInputElement;
+    fireEvent.change(nameInput, { target: { value: 'Valid Name' } });
+    const form = screen.getByTestId('form') as HTMLFormElement;
+    fireEvent.submit(form);
+    expect(screen.getByText(/Карточек нет/i)).toBeInTheDocument();
+  });
 });

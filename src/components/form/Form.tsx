@@ -34,7 +34,7 @@ class Form extends Component<FormProps, FormState> {
   render() {
     return (
       <div>
-        <form className="card_form" onSubmit={this.sendForm}>
+        <form className="card_form" onSubmit={this.sendForm} data-testid="form">
           <section>
             <label>
               Ваше имя <input type="text" ref={this.props.nameInput} />
@@ -64,6 +64,7 @@ class Form extends Component<FormProps, FormState> {
                     name="sex"
                     value="female"
                     ref={this.props.femaleInput}
+                    data-testid="radio"
                   />
                 </label>
               </div>
@@ -108,7 +109,7 @@ class Form extends Component<FormProps, FormState> {
           </section>
 
           <div>
-            <input type="file" ref={this.props.fileInput} />
+            <input type="file" ref={this.props.fileInput} data-testid="photo-uploader" />
             <p>{this.props.errFile ? 'файл не загружен' : ''}</p>
           </div>
           <input type="submit" value="Отправить" />
