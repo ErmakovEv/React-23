@@ -30,7 +30,6 @@ describe('FormPage', () => {
     const form = screen.getByTestId('form') as HTMLFormElement;
     fireEvent.change(nameInput, { target: { value: 'невалидное имя' } });
     fireEvent.submit(form);
-    screen.debug();
     expect(screen.getByText(/неправильное имя/i)).toBeInTheDocument();
   });
 
