@@ -67,6 +67,7 @@ class FormPage extends React.Component<FormPageProps, FormPageState> {
     this.techArr.map((item) => {
       if (item.ref.current?.checked) item.ref.current.checked = false;
     });
+    this.fileInput.current ? (this.fileInput.current.value = '') : '';
   };
 
   showMessage = () => {

@@ -46,7 +46,7 @@ class Form extends Component<FormProps, FormState> {
               Ваш пол
               <div>
                 <label className="checkbox" htmlFor="sex">
-                  <div>Женский</div>
+                  <div>Мужской</div>
                   <input
                     className="inline"
                     type="radio"
