@@ -1,0 +1,45 @@
+label {
+  display: block;
+  padding-right: 10px;
+}
+
+input {
+  display: flex;
+}
+
+.inline {
+  display: inline;
+}
+
+section {
+  margin-bottom: 10px;
+}
+
+p {
+  color: red;
+}
+
+.message {
+  display: none;
+}
+
+.message.active {
+  display: block;
+}
+
+.checkbox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.empty {
+  text-align: center;
+  width: 100%;
+}
+
+.card_container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
