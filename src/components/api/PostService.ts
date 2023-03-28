@@ -11,6 +11,10 @@ class PostService {
       console.log(error);
     }
   }
+
+  unsibscribe() {
+    console.log('You unsibscribed!');
+  }
 }
 
 export default new PostService();

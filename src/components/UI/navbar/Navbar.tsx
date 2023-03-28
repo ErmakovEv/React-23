@@ -45,3 +45,31 @@ export function Navbar(props: { name: string }) {
     </div>
   );
 }
+
+const Navigation = () => {
+  const page = useLocation().pathname;
+
+  return (
+    <div className="navbar">
+      <div className="container navbar__container">
+        <div className="navbar__links">
+          <NavLink className="link" to="/">
+            Main
+          </NavLink>
+          <NavLink className="link" to="/about">
+            About us
+          </NavLink>
+          <NavLink className="link" to="/form">
+            Form
+          </NavLink>
+        </div>
+        <p className="page_name">{path[page as keyof typeof path] + '!'}</p>
+      </div>
+      <div className="line_container">
+        <hr />
+      </div>
+    </div>
+  );
+};
+
+export { Navigation };
