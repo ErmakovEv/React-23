@@ -22,6 +22,9 @@ class FormPage extends React.Component<FormPageProps, FormPageState> {
   private fileInput;
   private errName = false;
   private errSex = false;
+  private errDate = false;
+  private errSpec = false;
+  private errTech = false;
   private errFile = false;
   constructor(props: FormPageProps) {
     super(props);
@@ -47,15 +50,22 @@ class FormPage extends React.Component<FormPageProps, FormPageState> {
     name: string,
     male: string | null,
     female: string | null,
-    file: File | null
+    file: File | null,
+    date: string | null,
+    spec: string | null,
+    techArrlength: number
   ) => {
     male || female ? (this.errSex = false) : (this.errSex = true);
     file ? (this.errFile = false) : (this.errFile = true);
     name
-      ? /^[a-zA-Z ]+$/.test(name)
+      ? /^[a-zA-Z ]+$/.test(name) && name.length >= 3
         ? (this.errName = false)
         : (this.errName = true)
       : (this.errName = true);
+    this.errDate = !date;
+    spec === 'default' ? this.errSpec === true : this.errSpec === false;
+    this.errSpec = !techArrlength;
+    console.log(techArrlength);
   };
 
   clearForm = () => {
@@ -95,8 +105,15 @@ class FormPage extends React.Component<FormPageProps, FormPageState> {
       ? this.fileInput.current?.files[0]
       : null;
 
-    this.cardValidation(newName, newMale, newFemale, newFile);
-    if (newFile && !this.errName && !this.errSex) {
+    this.cardValidation(newName, newMale, newFemale, newFile, newDate, newSpec, newTech.length);
+    if (
+      newFile &&
+      !this.errName &&
+      !this.errSex &&
+      !this.errDate &&
+      !this.errSpec &&
+      !this.errTech
+    ) {
       const fileReader = new FileReader();
       fileReader.onload = () => {
         newSrc = fileReader.result;
@@ -137,6 +154,9 @@ class FormPage extends React.Component<FormPageProps, FormPageState> {
           errName={this.errName}
           errSex={this.errSex}
           errFile={this.errFile}
+          errDate={this.errDate}
+          errSpec={this.errSpec}
+          errTech={this.errTech}
           classMsg={this.state.classMsg}
         />
         <CardList cards={this.state.cards} />

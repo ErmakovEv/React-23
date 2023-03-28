@@ -16,6 +16,9 @@ interface FormProps {
   errName: boolean;
   errSex: boolean;
   errFile: boolean;
+  errDate: boolean;
+  errSpec: boolean;
+  errTech: boolean;
   classMsg: string;
 }
 
@@ -76,14 +79,17 @@ class Form extends Component<FormProps, FormState> {
               Дата начала изучения JS <input type="date" ref={this.props.dateInput} />
             </label>
           </section>
+          <p>{this.props.errDate ? 'Дата не выбрана' : ''}</p>
           <section>
             <label>
               Ваша специализация JS
               <div>
-                <select ref={this.props.specialityInput}>
+                <select ref={this.props.specialityInput} defaultValue="default">
+                  <option value="default">Выбери специализацию</option>
                   <option value="Frontend">Frontend</option>
                   <option value="Backend">Backend</option>
                 </select>
+                <p>{this.props.errSpec ? 'Специализация не выбрана' : ''}</p>
               </div>
             </label>
           </section>
@@ -102,6 +108,7 @@ class Form extends Component<FormProps, FormState> {
                         ref={item.ref}
                       />
                     </label>
+                    <p>{this.props.errTech ? 'Стек не выбран' : ''}</p>
                   </div>
                 ))}
               </div>
