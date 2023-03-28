@@ -64,7 +64,7 @@ class FormPage extends React.Component<FormPageProps, FormPageState> {
       : (this.errName = true);
     this.errDate = !date;
     spec === 'default' ? this.errSpec === true : this.errSpec === false;
-    this.errSpec = !techArrlength;
+    this.errTech = !techArrlength;
     console.log(techArrlength);
   };
 

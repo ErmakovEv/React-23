@@ -108,9 +108,9 @@ class Form extends Component<FormProps, FormState> {
                         ref={item.ref}
                       />
                     </label>
-                    <p>{this.props.errTech ? 'Стек не выбран' : ''}</p>
                   </div>
                 ))}
+                <p>{this.props.errTech ? 'Стек не выбран' : ''}</p>
               </div>
             </label>
           </section>
