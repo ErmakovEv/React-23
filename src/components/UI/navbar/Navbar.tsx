@@ -62,6 +62,9 @@ const Navigation = () => {
           <NavLink className="link" to="/form">
             Form
           </NavLink>
+          <NavLink className="link" to="/new-form">
+            NewForm
+          </NavLink>
         </div>
         <p className="page_name">{path[page as keyof typeof path] + '!'}</p>
       </div>
