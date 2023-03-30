@@ -1,77 +1,19 @@
 import * as React from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-type Inputs = {
-  firstName: string;
-  loadFile: FileList;
-};
-
-type Card = {
-  src: string | ArrayBuffer | null;
-};
+import { ICard } from '../components/card/Card.types';
+import NewForm from '../components/newForm/NewForm';
+import CardList from '../components/cardList/CardList';
 
 function NewFormPage() {
-  const [cards, setCards] = React.useState<Card[]>([]);
+  const [cards, setCards] = React.useState<ICard[]>([]);
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    reset,
-  } = useForm<Inputs>({
-    reValidateMode: 'onSubmit',
-  });
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    const fileReader = new FileReader();
-    let newSrc: string | ArrayBuffer | null = '';
-    fileReader.onload = () => {
-      newSrc = fileReader.result;
-      setCards([...cards, { src: newSrc }]);
-    };
-    fileReader.readAsDataURL(data.loadFile[0]);
-    reset();
+  const cardCreater = (card: ICard) => {
+    setCards([...cards, card]);
   };
 
   return (
     <div className="container new_from_page_container">
-      <h1>React-hook-form</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          First name
-          <input
-            type="text"
-            {...register('firstName', {
-              required: 'ERR@!@#',
-              minLength: {
-                value: 5,
-                message: 'Минимум 5 символов',
-              },
-            })}
-          />
-        </label>
-        <div>{errors?.firstName && <p>{errors?.firstName.message}</p>}</div>
-        <input type="submit" value="Отправить" />
-        <label>
-          Load file
-          <input
-            type="file"
-            {...register('loadFile', {
-              required: 'ERR@!@#',
-            })}
-          />
-        </label>
-        <div>{errors?.firstName && <p>{errors?.firstName.message}</p>}</div>
-        <input type="submit" value="Отправить" />
-      </form>
-      <div>
-        {cards.length
-          ? cards.map((item, index) => {
-              return (
-                <img src={item.src?.toString()} key={index} alt="card" style={{ width: '100px' }} />
-              );
-            })
-          : 'Карточек нет'}
-      </div>
+      <NewForm cardCreateHandler={cardCreater} />
+      <CardList cards={cards} />
     </div>
   );
 }
