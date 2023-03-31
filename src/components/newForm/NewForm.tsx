@@ -19,6 +19,7 @@ const NewForm: React.FC<FormProps> = ({ cardCreateHandler }) => {
   });
 
   const onSubmit: SubmitHandler<FormTypes> = (data) => {
+    console.log(111);
     const fileReader = new FileReader();
 
     fileReader.onload = () => {
@@ -37,7 +38,7 @@ const NewForm: React.FC<FormProps> = ({ cardCreateHandler }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} data-testid="new-form">
         <NameInput register={register} errors={errors} />
         <DateInput register={register} errors={errors} />
         <GenderRadioInput register={register} errors={errors} />
@@ -45,7 +46,7 @@ const NewForm: React.FC<FormProps> = ({ cardCreateHandler }) => {
         <StackCheckBoxGroup register={register} errors={errors} />
         <AvatarInput register={register} errors={errors} />
         <div>
-          <input type="submit" value="Отправить" />
+          <input type="submit" value="Отправить" data-testid="submit-btn" />
         </div>
       </form>
     </div>

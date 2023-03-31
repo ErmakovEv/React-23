@@ -9,11 +9,12 @@ function AvatarInput(props: InputProps) {
         <input
           type="file"
           {...props.register('loadFile', {
-            required: 'ERR@!@#',
+            required: 'Error input file',
           })}
+          data-testid="file-loader"
         />
       </label>
-      <div>{props.errors?.name && <p>{props.errors?.name.message}</p>}</div>
+      <div>{props.errors?.loadFile && <p>{props.errors?.loadFile.message}</p>}</div>
     </div>
   );
 }

@@ -9,11 +9,12 @@ function DateInput(props: InputProps) {
         <input
           type="date"
           {...props.register('date', {
-            required: 'Date',
+            required: 'error date input',
           })}
+          data-testid="input-date"
         />
       </label>
-      <div>{props.errors?.name && <p>{props.errors?.name.message}</p>}</div>
+      <div>{props.errors?.date && <p>{props.errors?.date.message}</p>}</div>
     </div>
   );
 }

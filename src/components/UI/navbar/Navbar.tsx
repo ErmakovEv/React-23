@@ -11,6 +11,7 @@ const path = {
   '/': 'Main',
   '/about': 'About',
   '/form': 'Form',
+  '/new-form': 'NewForm',
 };
 
 export const AppNavbar = () => {

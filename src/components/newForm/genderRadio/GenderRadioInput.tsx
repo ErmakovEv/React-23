@@ -11,9 +11,10 @@ function GenderRadioInput(props: InputProps) {
           <input
             type="radio"
             {...props.register('sex', {
-              required: 'ERR@!@#',
+              required: 'error radio input',
             })}
             value="male"
+            data-testid="input-male"
           />
         </div>
         <div>
@@ -27,7 +28,7 @@ function GenderRadioInput(props: InputProps) {
           />
         </div>
       </label>
-      <div>{props.errors?.name && <p>{props.errors?.name.message}</p>}</div>
+      <div>{props.errors?.sex && <p>{props.errors?.sex.message}</p>}</div>
     </div>
   );
 }

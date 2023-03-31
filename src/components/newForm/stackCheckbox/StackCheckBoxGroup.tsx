@@ -16,9 +16,10 @@ function StackCheckBoxGroup(props: InputProps) {
                   className="inline"
                   type="checkbox"
                   {...props.register('techArr', {
-                    required: 'ERR@!@',
+                    // required: 'error checkbox',
                   })}
                   value={item}
+                  // data-testid="input-checkbox"
                 />
               </label>
             </div>

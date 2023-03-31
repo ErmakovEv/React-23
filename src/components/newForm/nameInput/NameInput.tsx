@@ -9,12 +9,13 @@ function NameInput(props: InputProps) {
         <input
           type="text"
           {...props.register('name', {
-            required: 'Name!!!',
+            required: 'Name error!!!',
             minLength: {
               value: 5,
               message: 'Минимум 5 символов',
             },
           })}
+          data-testid="input-name"
         />
       </label>
       <div>{props.errors?.name && <p>{props.errors?.name.message}</p>}</div>

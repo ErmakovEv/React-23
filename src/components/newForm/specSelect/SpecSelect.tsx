@@ -7,7 +7,11 @@ function SpecSelect(props: InputProps) {
       <label>
         Ваша специализация JS
         <div>
-          <select {...props.register('speciality', { required: 'asaa' })} defaultValue="default">
+          <select
+            {...props.register('speciality', { required: 'error spec input' })}
+            defaultValue="default"
+            data-testid="select"
+          >
             <option value="">Выбери специализацию</option>
             <option value="Frontend">Frontend</option>
             <option value="Backend">Backend</option>
