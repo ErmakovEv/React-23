@@ -7,6 +7,7 @@ function NewFormPage() {
   const [cards, setCards] = React.useState<ICard[]>([]);
 
   const cardCreater = (card: ICard) => {
+    console.log(card);
     setCards([...cards, card]);
   };
 

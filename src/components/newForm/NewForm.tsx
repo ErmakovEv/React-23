@@ -19,9 +19,8 @@ const NewForm: React.FC<FormProps> = ({ cardCreateHandler }) => {
   });
 
   const onSubmit: SubmitHandler<FormTypes> = (data) => {
-    console.log(111);
+    console.log('onSubmit');
     const fileReader = new FileReader();
-
     fileReader.onload = () => {
       cardCreateHandler({
         name: data.name,

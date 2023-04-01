@@ -4,11 +4,11 @@ import classes from '../post/Post.module.css';
 
 interface CardProps {
   name: string;
-  sex: string | null;
-  date: string;
-  speciality: string | null;
-  technology: string[];
-  avaSrc: string | undefined;
+  sex?: string | null;
+  date?: string;
+  speciality?: string | null;
+  technology?: string[];
+  avaSrc?: string | undefined;
 }
 
 type CardState = Record<string, never>;
@@ -26,7 +26,7 @@ class Card extends Component<CardProps, CardState> {
         <p>{this.props.sex}</p>
         <h4>{this.props.date}</h4>
         <h4>{this.props.speciality}</h4>
-        <h4>{this.props.technology.join(' ')}</h4>
+        <h4>{this.props.technology?.join(' ')}</h4>
       </div>
     );
   }
