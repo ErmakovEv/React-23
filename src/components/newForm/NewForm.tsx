@@ -28,7 +28,7 @@ const NewForm: React.FC<FormProps> = ({ cardCreateHandler }) => {
         sex: data.sex,
         date: data.date,
         speciality: data.speciality,
-        technology: data.techArr,
+        technology: data.techArr.length ? data.techArr : [''],
         avaSrc: fileReader.result?.toString(),
       });
     };
