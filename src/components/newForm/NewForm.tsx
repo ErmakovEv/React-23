@@ -7,6 +7,8 @@ import GenderRadioInput from './genderRadio/GenderRadioInput';
 import SpecSelect from './specSelect/SpecSelect';
 import StackCheckBoxGroup from './stackCheckbox/StackCheckBoxGroup';
 import AvatarInput from './avatarInput/AvatarInput';
+import './NewForm.css';
+import ava from '../../assets/ava.png';
 
 const NewForm: React.FC<FormProps> = ({ cardCreateHandler }) => {
   const {
@@ -19,25 +21,33 @@ const NewForm: React.FC<FormProps> = ({ cardCreateHandler }) => {
   });
 
   const onSubmit: SubmitHandler<FormTypes> = (data) => {
-    console.log('onSubmit');
-    const fileReader = new FileReader();
-    fileReader.onload = () => {
-      cardCreateHandler({
-        name: data.name,
-        sex: data.sex,
-        date: data.date,
-        speciality: data.speciality,
-        technology: data.techArr.length ? data.techArr : [''],
-        avaSrc: fileReader.result?.toString(),
-      });
+    console.log(' fileReader.onload');
+    const newCard = {
+      name: data.name,
+      sex: data.sex,
+      date: data.date,
+      speciality: data.speciality,
+      technology: data.techArr.length ? data.techArr : [''],
+      avaSrc: ava,
     };
-    fileReader.readAsDataURL(data.loadFile[0]);
+    if (data?.loadFile[0]) {
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        if (fileReader.result) {
+          newCard.avaSrc = fileReader.result.toString();
+        }
+        cardCreateHandler(newCard);
+      };
+      fileReader.readAsDataURL(data?.loadFile[0]);
+    } else {
+      cardCreateHandler(newCard);
+    }
     reset();
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)} data-testid="new-form">
+      <form onSubmit={handleSubmit(onSubmit)} data-testid="new-form" className="newform">
         <NameInput register={register} errors={errors} />
         <DateInput register={register} errors={errors} />
         <GenderRadioInput register={register} errors={errors} />
@@ -45,7 +55,7 @@ const NewForm: React.FC<FormProps> = ({ cardCreateHandler }) => {
         <StackCheckBoxGroup register={register} errors={errors} />
         <AvatarInput register={register} errors={errors} />
         <div>
-          <input type="submit" value="Отправить" data-testid="submit-btn" />
+          <input type="submit" value="Отправить" data-testid="submit-btn" className="btn" />
         </div>
       </form>
     </div>

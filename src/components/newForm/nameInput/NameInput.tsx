@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { InputProps } from '../InputProps.types';
+import './NameInput.css';
 
 function NameInput(props: InputProps) {
   return (
-    <div>
-      <label>
-        You name
+    <div className="form-block">
+      <label className="input-name">
+        <div>You name</div>
         <input
           type="text"
           {...props.register('name', {
@@ -18,7 +19,9 @@ function NameInput(props: InputProps) {
           data-testid="input-name"
         />
       </label>
-      <div>{props.errors?.name && <p>{props.errors?.name.message}</p>}</div>
+      <div className="error-message">
+        {props.errors?.name && <p>{props.errors?.name.message}</p>}
+      </div>
     </div>
   );
 }

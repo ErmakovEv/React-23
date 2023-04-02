@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import { ICard } from '../card/Card.types';
 import Card from '../card/Card';
+import classes from './CardList.module.css';
 
 interface CardListProps {
   cards: ICard[];
@@ -15,7 +16,7 @@ class CardList extends Component<CardListProps, CardListState> {
   }
   render() {
     return (
-      <div className="card_container">
+      <div className={classes.card_container}>
         {this.props.cards.length ? (
           this.props.cards.map((item, index) => (
             <Card
@@ -29,7 +30,7 @@ class CardList extends Component<CardListProps, CardListState> {
             />
           ))
         ) : (
-          <h1 className="empty">Карточек нет!</h1>
+          <h1 className={classes.empty}>Карточек нет!</h1>
         )}
       </div>
     );

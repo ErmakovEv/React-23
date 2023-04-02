@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { InputProps } from '../InputProps.types';
+import './GenderRadioInput.css';
 
 function GenderRadioInput(props: InputProps) {
   return (
-    <div>
+    <div className="form-block">
       <label>
         You sex
-        <div>
-          <div>Мужской</div>
+        <label className="radio-label">
+          Male
           <input
             type="radio"
             {...props.register('sex', {
@@ -15,20 +16,25 @@ function GenderRadioInput(props: InputProps) {
             })}
             value="male"
             data-testid="input-male"
+            className="radio-input"
           />
-        </div>
-        <div>
-          <div>Женский</div>
+          <span className="radio-span"></span>
+        </label>
+        <label className="radio-label">
+          Female
           <input
             type="radio"
             {...props.register('sex', {
-              required: 'ERR@!@',
+              required: 'error radio input',
             })}
             value="female"
+            data-testid="input-female"
+            className="radio-input"
           />
-        </div>
+          <span className="radio-span"></span>
+        </label>
       </label>
-      <div>{props.errors?.sex && <p>{props.errors?.sex.message}</p>}</div>
+      <div className="error-message">{props.errors?.sex && <p>{props.errors?.sex.message}</p>}</div>
     </div>
   );
 }

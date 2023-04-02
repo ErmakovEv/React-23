@@ -1,0 +1,48 @@
+.label-checkbox {
+  display: block;
+  margin-bottom: 4px;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+.input-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.span-checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #ddd;
+  transition: 0.3s background-color;
+}
+
+.span-checkbox::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+label:hover span {
+  background-color: #ccc;
+}
+
+label input:checked ~ span {
+  background-color: blue;
+}
+label input:checked ~ span:after {
+  display: block;
+}

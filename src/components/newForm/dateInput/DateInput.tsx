@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { InputProps } from '../InputProps.types';
+import './DateInput.css';
 
 function DateInput(props: InputProps) {
   return (
-    <div>
+    <div className="form-block">
       <label>
-        Date of start study
+        <div>Date of start study</div>
         <input
           type="date"
           {...props.register('date', {
@@ -14,7 +15,9 @@ function DateInput(props: InputProps) {
           data-testid="input-date"
         />
       </label>
-      <div>{props.errors?.date && <p>{props.errors?.date.message}</p>}</div>
+      <div className="error-message">
+        {props.errors?.date && <p>{props.errors?.date.message}</p>}
+      </div>
     </div>
   );
 }
