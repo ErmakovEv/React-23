@@ -39,7 +39,6 @@ const MySearch = () => {
   React.useEffect(() => {
     const refValue = inputEl.current;
     return () => {
-      console.log('unMount');
       localStorage.setItem('search', refValue?.value || '');
     };
   }, []);
