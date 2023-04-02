@@ -21,7 +21,6 @@ const NewForm: React.FC<FormProps> = ({ cardCreateHandler }) => {
   });
 
   const onSubmit: SubmitHandler<FormTypes> = (data) => {
-    console.log(' fileReader.onload');
     const newCard = {
       name: data.name,
       sex: data.sex,
