@@ -60,9 +60,6 @@ const Navigation = () => {
           <NavLink className="link" to="/about">
             About us
           </NavLink>
-          <NavLink className="link" to="/form">
-            Form
-          </NavLink>
           <NavLink className="link" to="/new-form">
             NewForm
           </NavLink>
