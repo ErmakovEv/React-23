@@ -1,53 +1,35 @@
 import * as React from 'react';
 import './MySearch.css';
+import { SearchProps } from './MySearch.types';
 
-// type MySearchProps = Record<string, never>;
-
-// interface MySearchState {
-//   search: string;
-// }
-
-// class MySearch extends Component<MySearchProps, MySearchState> {
-//   constructor(props: MySearchProps) {
-//     super(props);
-//     this.state = { search: localStorage.getItem('search') || 'search..' };
-//   }
-
-//   componentWillUnmount(): void {
-//     localStorage.setItem('search', this.state.search);
-//   }
-
-//   searchHandler = (e: ChangeEvent<HTMLInputElement>) => {
-//     this.setState({ search: e.target.value });
-//   };
-
-//   render() {
-//     return (
-//       <input
-//         type="text"
-//         placeholder={this.state.search}
-//         className="search"
-//         onChange={this.searchHandler}
-//       />
-//     );
-//   }
-// }
-
-const MySearch = () => {
+const MySearch: React.FC<SearchProps> = ({ searchHandler }) => {
   const [search, setSearch] = React.useState(localStorage.getItem('search') || '');
   const inputEl = React.useRef<HTMLInputElement>(null);
   React.useEffect(() => {
+    console.log('MySearch');
     const refValue = inputEl.current;
     return () => {
       localStorage.setItem('search', refValue?.value || '');
     };
   }, []);
+
+  const keyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      searchHandler(e.currentTarget.value);
+    }
+  };
+
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
   return (
     <input
       type="text"
       value={search}
       className="search"
-      onChange={(e) => setSearch(e.target.value)}
+      onKeyDown={keyDownHandler}
+      onChange={changeHandler}
       ref={inputEl}
     />
   );

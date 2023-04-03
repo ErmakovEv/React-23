@@ -1,12 +1,16 @@
 class PostService {
-  async getAllHeadlines() {
+  async getAllHeadlines(query: string | undefined) {
+    const apiKey = 'JVqOkngyIlk_xeaCUIiv';
+    query = query ? `?name=${query}` : '';
     try {
-      const res = await fetch(
-        'https://newsapi.org/v2/top-headlines?country=us&' +
-          'apiKey=e81740fa41a6438fa9d69efd843769c2'
-      );
+      const res = await fetch(`https://the-one-api.dev/v2/character${query}`, {
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+        },
+      });
       const json = await res.json();
-      return json.articles;
+      console.log(json);
+      return json.docs;
     } catch (error) {
       console.log(error);
     }

@@ -3,46 +3,27 @@ import PostService from '../components/api/PostService';
 import PostList from '../components/postList/PostList';
 import MySearch from '../components/UI/search/MySearch';
 
-// type MainPageProps {}
-
-// interface MainPageState {
-//   posts: IPost[];
-// }
-
-// class MainPage extends Component<MainPageProps, MainPageState> {
-//   constructor(props: MainPageProps) {
-//     super(props);
-//     this.state = { posts: [] };
-//   }
-
-//   componentDidMount(): void {
-//     PostService.getAllHeadlines().then((data) => {
-//       this.setState({ posts: data });
-//     });
-//   }
-
-//   render() {
-//     return (
-//       <div className="main_page__container">
-//         <MySearch />
-//         <PostList posts={this.state.posts} />
-//       </div>
-//     );
-//   }
-// }
-
 const MainPage = () => {
   const [posts, setPosts] = React.useState([]);
+
+  const fetchPosts = async (query: string | undefined) => {
+    const data = await PostService.getAllHeadlines(query);
+    setPosts(data);
+  };
+
   React.useEffect(() => {
-    PostService.getAllHeadlines().then((data) => {
-      setPosts(data);
-    });
+    console.log('MainPage');
+    fetchPosts('');
     return () => PostService.unsibscribe();
   }, []);
 
+  const searchHandler = (search: string) => {
+    fetchPosts(search);
+  };
+
   return (
     <div className="main_page__container">
-      <MySearch />
+      <MySearch searchHandler={searchHandler} />
       <PostList posts={posts} />
     </div>
   );
