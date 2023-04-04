@@ -8,6 +8,7 @@ function NameInput(props: InputProps) {
       <label className="input-name">
         <div>You name</div>
         <input
+          className="input"
           type="text"
           {...props.register('name', {
             required: 'Name error!!!',

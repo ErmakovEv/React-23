@@ -5,16 +5,17 @@ import './PostList.css';
 
 interface PostListProps {
   posts: IPost[];
+  cb: (id: number) => void;
 }
 
-const PostList = (props: PostListProps) => {
-  if (!props.posts.length) {
+const PostList: React.FC<PostListProps> = ({ posts, cb }) => {
+  if (!posts.length) {
     return <h1 style={{ textAlign: 'center' }}>Пока новостей нет!</h1>;
   }
   return (
-    <div className="container postlist__container">
-      {props.posts.map((post) => (
-        <Post post={post} key={post._id} />
+    <div className="postlist_container">
+      {posts.map((post) => (
+        <Post post={post} key={post._id} cb={cb} />
       ))}
     </div>
   );

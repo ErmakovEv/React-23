@@ -27,7 +27,7 @@ const MySearch: React.FC<SearchProps> = ({ searchHandler }) => {
     <input
       type="text"
       value={search}
-      className="search"
+      className="search input"
       onKeyDown={keyDownHandler}
       onChange={changeHandler}
       ref={inputEl}

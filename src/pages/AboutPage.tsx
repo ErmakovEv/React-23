@@ -1,6 +1,6 @@
 function AboutPage() {
   return (
-    <div className="container">
+    <div className="App-main">
       <h1>About</h1>
     </div>
   );

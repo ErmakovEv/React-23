@@ -7,7 +7,7 @@ const testPost = {
 
 describe('PostList', () => {
   it('render empty PostList component', () => {
-    render(<PostList posts={[]} />);
+    render(<PostList posts={[]} cb={() => {}} />);
     expect(screen.getByText(/Пока новостей нет/)).toBeInTheDocument();
   });
 

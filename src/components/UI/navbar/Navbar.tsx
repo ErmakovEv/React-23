@@ -51,8 +51,8 @@ const Navigation = () => {
   const page = useLocation().pathname;
 
   return (
-    <div className="navbar">
-      <div className="container navbar__container">
+    <div className="App-header">
+      <div className="wrapper navbar__container">
         <div className="navbar__links">
           <NavLink className="link" to="/">
             Main
