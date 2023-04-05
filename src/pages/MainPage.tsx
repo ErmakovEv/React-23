@@ -12,9 +12,13 @@ const MainPage = () => {
 
   const [bigCard, setBigCard] = React.useState<IPost>({});
 
+  const [isPostLoading, setisPostLoading] = React.useState<boolean>(false);
+
   const fetchPosts = async (query: string | undefined) => {
+    setisPostLoading(true);
     const data = await PostService.getAllHeadlines(query);
     setPosts(data);
+    setisPostLoading(false);
   };
 
   React.useEffect(() => {
@@ -45,7 +49,11 @@ const MainPage = () => {
       </MyModal>
       <div className="wrapper">
         <MySearch searchHandler={searchHandler} />
-        <PostList posts={posts} cb={openModal} />
+        {isPostLoading ? (
+          <h1 style={{ textAlign: 'center', paddingTop: '50px' }}>Loading...</h1>
+        ) : (
+          <PostList posts={posts} cb={openModal} />
+        )}
       </div>
       <div className="FooterSpacer" />
     </div>

@@ -10,7 +10,7 @@ interface PostListProps {
 
 const PostList: React.FC<PostListProps> = ({ posts, cb }) => {
   if (!posts.length) {
-    return <h1 style={{ textAlign: 'center' }}>Пока новостей нет!</h1>;
+    return <h1 style={{ textAlign: 'center', paddingTop: '50px' }}>Пока новостей нет!</h1>;
   }
   return (
     <div className="postlist_container">
