@@ -7,21 +7,6 @@ interface PostListProps {
   posts: IPost[];
 }
 
-// class PostList extends Component<PostListProps> {
-//   render() {
-//     if (!this.props.posts.length) {
-//       return <h1 style={{ textAlign: 'center' }}>Пока новостей нет!</h1>;
-//     }
-//     return (
-//       <div className="container postlist__container">
-//         {this.props.posts.map((post) => (
-//           <Post post={post} key={post.title} />
-//         ))}
-//       </div>
-//     );
-//   }
-// }
-
 const PostList = (props: PostListProps) => {
   if (!props.posts.length) {
     return <h1 style={{ textAlign: 'center' }}>Пока новостей нет!</h1>;
