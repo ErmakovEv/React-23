@@ -1,3 +1,5 @@
 export type SearchProps = {
-  searchHandler: (search: string) => void;
+  searchSubmitHandler: (search: string) => void;
+  searchChangeHandler: (search: string) => void;
+  searchValue: string;
 };

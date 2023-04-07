@@ -4,8 +4,15 @@ import PostList from '../components/postList/PostList';
 import MySearch from '../components/UI/search/MySearch';
 import { IPost } from '../components/post/Post.types';
 import MyModal from '../components/UI/myModal/MyModal';
+import BigCard from '../components/bigPost/bigPost';
 
 const MainPage = () => {
+  console.log('render mainPage');
+
+  const initialValueSearch = localStorage.getItem('search') || '';
+
+  const [search, setSearch] = React.useState(initialValueSearch);
+
   const [posts, setPosts] = React.useState<IPost[]>([]);
 
   const [modal, setModal] = React.useState<boolean>(false);
@@ -22,13 +29,18 @@ const MainPage = () => {
   };
 
   React.useEffect(() => {
-    console.log('MainPage');
-    fetchPosts('');
+    console.log('useEffect MainPage');
+    fetchPosts(initialValueSearch);
     return () => PostService.unsibscribe();
-  }, []);
+  }, [initialValueSearch]);
 
-  const searchHandler = (search: string) => {
-    fetchPosts(search);
+  const searchSubmitHandler = (searchSubmitValue: string) => {
+    localStorage.setItem('search', searchSubmitValue || '');
+    fetchPosts(searchSubmitValue);
+  };
+
+  const searchChangeHandler = (searchChangeValue: string) => {
+    setSearch(searchChangeValue);
   };
 
   const openModal = (id: number) => {
@@ -41,14 +53,14 @@ const MainPage = () => {
   return (
     <div className="App-main">
       <MyModal visible={modal} setVisible={setModal}>
-        <div>
-          BIG CARD
-          <h1>{bigCard.name}</h1>
-          <h2>{bigCard._id}</h2>
-        </div>
+        <BigCard name={bigCard.name} gender={bigCard.gender} />
       </MyModal>
       <div className="wrapper">
-        <MySearch searchHandler={searchHandler} />
+        <MySearch
+          searchSubmitHandler={searchSubmitHandler}
+          searchChangeHandler={searchChangeHandler}
+          searchValue={search}
+        />
         {isPostLoading ? (
           <h1 style={{ textAlign: 'center', paddingTop: '50px' }}>Loading...</h1>
         ) : (
