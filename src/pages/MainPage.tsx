@@ -7,8 +7,6 @@ import MyModal from '../components/UI/myModal/MyModal';
 import BigCard from '../components/bigPost/bigPost';
 
 const MainPage = () => {
-  console.log('render mainPage');
-
   const initialValueSearch = localStorage.getItem('search') || '';
 
   const [posts, setPosts] = React.useState<IPost[]>([]);
@@ -20,7 +18,6 @@ const MainPage = () => {
   const [isPostLoading, setisPostLoading] = React.useState<boolean>(false);
 
   const fetchPosts = async (query: string | undefined) => {
-    console.log('useEffect MainPage');
     setisPostLoading(true);
     const data = await PostService.getAllHeadlines(query);
     setPosts(data);
@@ -28,7 +25,6 @@ const MainPage = () => {
   };
 
   React.useEffect(() => {
-    console.log('useEffect MainPage');
     fetchPosts(localStorage.getItem('search') || '');
     return () => PostService.unsibscribe();
   }, []);
