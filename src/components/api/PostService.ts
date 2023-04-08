@@ -1,6 +1,6 @@
 class PostService {
   async getAllHeadlines(query: string | undefined) {
-    const apiKey = 'JVqOkngyIlk_xeaCUIiv';
+    const apiKey = 'M8tj8NNYOrc0WB5dsIeE';
     query = query ? `?name=${query}` : '';
     try {
       const res = await fetch(`https://the-one-api.dev/v2/character${query}`, {
@@ -12,7 +12,7 @@ class PostService {
       console.log(json);
       return json.docs;
     } catch (error) {
-      console.log(error);
+      console.log('Error', error);
     }
   }
 

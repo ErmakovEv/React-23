@@ -9,7 +9,7 @@ interface PostProps {
 
 const Post: React.FC<PostProps> = ({ post, cb }) => {
   return (
-    <div className={classes.post} onClick={() => (post._id ? cb(post._id) : '')}>
+    <div className={classes.post} onClick={() => (post._id ? cb(post._id) : '')} data-testid="post">
       <h3>{post.name}</h3>
     </div>
   );

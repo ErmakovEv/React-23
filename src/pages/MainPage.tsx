@@ -11,8 +11,6 @@ const MainPage = () => {
 
   const initialValueSearch = localStorage.getItem('search') || '';
 
-  const [search, setSearch] = React.useState(initialValueSearch);
-
   const [posts, setPosts] = React.useState<IPost[]>([]);
 
   const [modal, setModal] = React.useState<boolean>(false);
@@ -22,6 +20,7 @@ const MainPage = () => {
   const [isPostLoading, setisPostLoading] = React.useState<boolean>(false);
 
   const fetchPosts = async (query: string | undefined) => {
+    console.log('useEffect MainPage');
     setisPostLoading(true);
     const data = await PostService.getAllHeadlines(query);
     setPosts(data);
@@ -30,17 +29,13 @@ const MainPage = () => {
 
   React.useEffect(() => {
     console.log('useEffect MainPage');
-    fetchPosts(initialValueSearch);
+    fetchPosts(localStorage.getItem('search') || '');
     return () => PostService.unsibscribe();
-  }, [initialValueSearch]);
+  }, []);
 
   const searchSubmitHandler = (searchSubmitValue: string) => {
     localStorage.setItem('search', searchSubmitValue || '');
     fetchPosts(searchSubmitValue);
-  };
-
-  const searchChangeHandler = (searchChangeValue: string) => {
-    setSearch(searchChangeValue);
   };
 
   const openModal = (id: number) => {
@@ -53,14 +48,20 @@ const MainPage = () => {
   return (
     <div className="App-main">
       <MyModal visible={modal} setVisible={setModal}>
-        <BigCard name={bigCard.name} gender={bigCard.gender} />
+        <BigCard
+          name={bigCard.name}
+          gender={bigCard.gender}
+          hair={bigCard.hair}
+          height={bigCard.height}
+          race={bigCard.race}
+          realm={bigCard.realm}
+          spouse={bigCard.spouse}
+          death={bigCard.death}
+          wikiUrl={bigCard.wikiUrl}
+        />
       </MyModal>
       <div className="wrapper">
-        <MySearch
-          searchSubmitHandler={searchSubmitHandler}
-          searchChangeHandler={searchChangeHandler}
-          searchValue={search}
-        />
+        <MySearch searchSubmitHandler={searchSubmitHandler} searchValue={initialValueSearch} />
         {isPostLoading ? (
           <h1 style={{ textAlign: 'center', paddingTop: '50px' }}>Loading...</h1>
         ) : (
