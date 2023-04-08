@@ -9,7 +9,6 @@ class PostService {
         },
       });
       const json = await res.json();
-      console.log(json);
       return json.docs;
     } catch (error) {
       console.log('Error', error);

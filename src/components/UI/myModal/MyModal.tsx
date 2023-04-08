@@ -14,9 +14,9 @@ const MyModal: React.FC<MyModalProps> = ({ children, visible, setVisible }) => {
   }
 
   return (
-    <div className={classes.join(' ')} onClick={() => setVisible(false)}>
+    <div className={classes.join(' ')} onClick={() => setVisible(false)} data-testid="modal-root">
       <div className="myModalContent">
-        <button onClick={() => setVisible(false)}>X</button>
+        <button>X</button>
         <div className="content" onClick={(e) => e.stopPropagation()}>
           {children}
         </div>

@@ -15,6 +15,7 @@ const MySearch: React.FC<SearchProps> = ({ searchSubmitHandler, searchValue }) =
       defaultValue={searchValue}
       className="search input"
       onKeyDown={keyDownHandler}
+      data-testid="search"
     />
   );
 };
