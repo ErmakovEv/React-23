@@ -4,6 +4,7 @@ import Post from '../components/post/Post';
 import userEvent from '@testing-library/user-event';
 
 const testPost = {
+  _id: 1,
   name: 'test',
 };
 
@@ -22,7 +23,6 @@ describe('PostList', () => {
     render(<Post post={testPost} cb={() => {}} />);
     const postElem = screen.getByTestId('post') as HTMLDivElement;
     userEvent.click(postElem);
-    screen.debug();
     expect(screen.getByText(/test/)).toBeInTheDocument();
   });
 });
