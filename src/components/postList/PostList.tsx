@@ -4,12 +4,12 @@ import Post from '../post/Post';
 import './PostList.css';
 
 interface PostListProps {
-  posts: IPost[];
+  posts: IPost[] | undefined;
   cb: (id: number) => void;
 }
 
 const PostList: React.FC<PostListProps> = ({ posts, cb }) => {
-  if (!posts.length) {
+  if (!posts?.length) {
     return <h1 style={{ textAlign: 'center', paddingTop: '50px' }}>Пока новостей нет!</h1>;
   }
   return (
