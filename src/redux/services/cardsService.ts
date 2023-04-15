@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
-import { IPost } from '../../components/post/Post.types';
 import Iapi from './apiTypes';
 export const cardsApi = createApi({
   reducerPath: 'cardApi',

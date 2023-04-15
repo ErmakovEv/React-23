@@ -1,14 +1,11 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { ICard } from '../../../components/card/Card.types';
 
 interface IsearchState {
   mySearch: string;
-  count: number;
 }
 
 const initialState: IsearchState = {
   mySearch: '',
-  count: 0,
 };
 
 export const searchSlice = createSlice({

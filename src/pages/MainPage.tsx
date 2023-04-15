@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PostService from '../components/api/PostService';
 import PostList from '../components/postList/PostList';
 import MySearch from '../components/UI/search/MySearch';
 import { IPost } from '../components/post/Post.types';
@@ -11,7 +10,6 @@ import { searchSlice } from '../redux/store/reducers/searchSlice';
 
 const MainPage = () => {
   const { mySearch } = useAppSelector((state) => state.searchReducer);
-  console.log('mySearck', mySearch);
   const { setSearch } = searchSlice.actions;
 
   const dispatch = useAppDispatch();
@@ -22,30 +20,11 @@ const MainPage = () => {
 
   const [bigCard, setBigCard] = React.useState<IPost>({});
 
-  // const [posts, setPosts] = React.useState<IPost[]>([]);
-  // const [isPostLoading, setisPostLoading] = React.useState<boolean>(false);
-
-  // const fetchPosts = async (query: string | undefined) => {
-  //   setisPostLoading(true);
-  //   const data = await PostService.getAllHeadlines(query);
-  //   // setPosts(data);
-  //   setisPostLoading(false);
-  // };
-
-  // React.useEffect(() => {
-  //   // fetchPosts(localStorage.getItem('search') || '');
-  //   // return () => PostService.unsibscribe();
-
-  // }, []);
-
   const searchSubmitHandler = (searchSubmitValue: string) => {
-    console.log(123);
     dispatch(setSearch(searchSubmitValue));
-    // fetchPosts(searchSubmitValue);
   };
 
   const openModal = (id: number) => {
-    console.log(data?.docs);
     setModal(true);
 
     const currentBidGard = data?.docs?.find((item) => item._id === id);
@@ -69,10 +48,12 @@ const MainPage = () => {
       </MyModal>
       <div className="wrapper">
         <MySearch searchSubmitHandler={searchSubmitHandler} searchValue={mySearch} />
-        {isLoading && <h1 style={{ textAlign: 'center', paddingTop: '50px' }}>Loading...</h1>}
+        {isLoading ? (
+          <h1 style={{ textAlign: 'center', paddingTop: '50px' }}>Loading...</h1>
+        ) : (
+          <PostList posts={data?.docs} cb={openModal} />
+        )}
         {error && <h1 style={{ textAlign: 'center', paddingTop: '50px' }}>Ошибка</h1>}
-        <PostList posts={data?.docs} cb={openModal} />
-        {/* )} */}
       </div>
       <div className="FooterSpacer" />
     </div>

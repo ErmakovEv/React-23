@@ -2,12 +2,15 @@ import * as React from 'react';
 import { ICard } from '../components/card/Card.types';
 import NewForm from '../components/newForm/NewForm';
 import CardList from '../components/cardList/CardList';
+import { useAppDispatch, useAppSelector } from '../redux/store/hooks/redux';
+import { cardsSlice } from '../redux/store/reducers/cardsSlice';
 
 function NewFormPage() {
-  const [cards, setCards] = React.useState<ICard[]>([]);
-
+  const { cards } = useAppSelector((state) => state.cardsReduscer);
+  const { setCards } = cardsSlice.actions;
+  const dispatch = useAppDispatch();
   const cardCreater = (card: ICard) => {
-    setCards([...cards, card]);
+    dispatch(setCards(card));
   };
 
   return (

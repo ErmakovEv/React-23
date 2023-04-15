@@ -1,10 +1,16 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import NewFormPage from '../pages/NewFormPage';
 import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
+import { store } from '../redux/store';
 
 describe('test newForm', () => {
   it('submit call', async () => {
-    render(<NewFormPage />);
+    render(
+      <Provider store={store}>
+        <NewFormPage />
+      </Provider>
+    );
     const inputName = screen.getByTestId('input-name') as HTMLInputElement;
     const dateInput = screen.getByTestId('input-date') as HTMLInputElement;
     const genderRadio = screen.getByTestId('input-male') as HTMLInputElement;
