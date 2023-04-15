@@ -14,7 +14,7 @@ function NewFormPage() {
   };
 
   return (
-    <div className="container new_from_page_container">
+    <div className="new_from_page_container">
       <NewForm cardCreateHandler={cardCreater} />
       <CardList cards={cards} />
     </div>
