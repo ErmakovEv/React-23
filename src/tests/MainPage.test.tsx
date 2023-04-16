@@ -4,34 +4,9 @@ import MySearch from '../components/UI/search/MySearch';
 import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
-import { configureStore } from '@reduxjs/toolkit';
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IPost } from '../components/post/Post.types';
 
 describe('MainPage tests', () => {
   it('test loading...', () => {
-    // interface IpostState {
-    //   posts: IPost[];
-    // }
-
-    // const initialState: IpostState = {
-    //   posts: [{ _id: 1 }],
-    // };
-
-    // const testSlice = createSlice({
-    //   name: 'testPosts',
-    //   initialState,
-    //   reducers: {
-    //     setSearch(state, action: PayloadAction<Record<'_id', number>>) {
-    //       state.posts.push(action.payload);
-    //     },
-    //   },
-    // });
-
-    // const testStore = configureStore({
-    //   reducer: testSlice.reducer,
-    // });
-
     render(
       <Provider store={store}>
         <MainPage />
