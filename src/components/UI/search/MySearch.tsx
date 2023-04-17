@@ -5,7 +5,6 @@ import { SearchProps } from './MySearch.types';
 const MySearch: React.FC<SearchProps> = ({ searchSubmitHandler, searchValue }) => {
   const keyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      console.log(e.currentTarget.value);
       searchSubmitHandler(e.currentTarget.value);
     }
   };
