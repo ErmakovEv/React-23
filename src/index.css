@@ -1,0 +1,70 @@
+html,
+body {
+  overflow: hidden;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App-header .App-footer {
+  height: 50px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-main {
+  flex-grow: 1;
+  max-height: calc(100vh - 100px); /* 100px - высота хедера и футера */
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.FooterSpacer {
+  height: 50px; /* высота футера */
+}
+
+.App-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ccc;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  width: 70%;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.search {
+  position: fixed;
+  width: 69%;
+}
+
+.postlist_container {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.new_from_page_container {
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.error-message p {
+  margin-top: 0px;
+}

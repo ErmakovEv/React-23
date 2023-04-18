@@ -1,0 +1,30 @@
+.link {
+  text-decoration: none;
+  color: #666;
+  font-family: 'Roboto';
+  font-weight: 100;
+  padding-right: 20px;
+}
+
+.link.active {
+  color: black;
+  cursor: default;
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+.navbar__container {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.page_name {
+  color: blue;
+  font-style: italic;
+}
+
+.line_container {
+  width: 70%;
+  margin: 0 auto;
+}
